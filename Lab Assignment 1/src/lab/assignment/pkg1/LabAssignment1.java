@@ -1,17 +1,31 @@
-package com.company;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package lab.assignment.pkg1;
+
 import java.util.*;
-public class Main {
+/**
+ *
+ * @author chief_kmv
+ */
+public class LabAssignment1 {
+
     String fname;
     String lname;
     String waddress;
     String city;
     int zipcode;
+         
     String country;
-
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-
-	// write your code here
-        Main p1=new Main();
+        // TODO code application logic here
+        
+        LabAssignment1 p1=new LabAssignment1();
         Scanner scan=new Scanner(System.in);
         System.out.println("Enter First Name:");
         p1.fname=scan.nextLine();
@@ -43,13 +57,13 @@ public class Main {
 
         System.out.println("1)\tAddress:\t"+p1.waddress);
 
-        System.out.println("2)\tCity:\t"+p1.city);
+        System.out.println("2)\tCity:\t\t"+p1.city);
 
         System.out.println("3)\tZip Code:\t"+p1.zipcode);
 
         System.out.println("4)\tCountry:\t"+p1.country);
 
 
-
     }
+    
 }
