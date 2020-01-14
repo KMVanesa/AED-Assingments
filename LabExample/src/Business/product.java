@@ -13,10 +13,9 @@ public class product {
     private String f_name;
     private String l_name;
     private String p_num;
-    private String dob;
+    
     private String age;
-    private int height;
-    private int weight;
+   
     private String ssn;
 
     public String getAge() {
@@ -59,31 +58,8 @@ public class product {
         this.p_num = p_num;
     }
 
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
 
     
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
 
    
 }
