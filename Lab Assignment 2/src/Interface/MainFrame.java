@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Interface;
-import PersonDetails.Address;
+
 import PersonDetails.Person;
 /**
  *
@@ -15,16 +15,14 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    Person p1=new Person();
-    Address w=new Address();
-    Address l=new Address();
-    Address h=new Address();
+    Person person1=new Person();
     
-    //l.address="KMV";
+    
+    
     public MainFrame() {
         initComponents();
-        p1=new Person();
-        w=new Address();
+        person1=new Person();
+        
         displayDetails();
         displayWorkingAddress();
         displayLocalAddress();
@@ -32,115 +30,116 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void displayDetails(){
-        String name=p1.getFname();
-        fnameText.setText(name);
-        String last=p1.getLname();
-        lnameText.setText(last);
-        String DOB=p1.getDOB();
-        dobText.setText(DOB);
+        
+        person1.setFname("Krutarth");
+        fnameText.setText(person1.getFname());
+        person1.setLname("Vanesa");
+        lnameText.setText(person1.getLname());
+        person1.setDOB("10/22/1997");
+        dobText.setText(person1.getDOB());
         
     }
     
     private void displayWorkingAddress(){
         
         
-        w.setAddress1("137 Park Drive");
-        w.setAddress2("B45");
-        w.setCity("Boston");
-        w.setState("MA");
-        w.setZip("02215");
-        w.setCountry("US");
-        
-        p1.setWork(w);
-        
-        String wa1=p1.getWork().getAddress1();
-        w_a1_Text.setText(wa1);
-        
-        String wa2=p1.getWork().getAddress2();
-        w_a2_Text.setText(wa2);
+        person1.work.setAddress1("137 Park Drive");
+        person1.work.setAddress2("B45");
+        person1.work.setCity("Boston");
+        person1.work.setState("MA");
+        person1.work.setZip("02215");
+        person1.work.setCountry("US");
         
         
-        String wcity=p1.getWork().getCity();
-        w_city_Text.setText(wcity);
+        
+        
+        w_a1_Text.setText(person1.getWork().getAddress1());
+        
+        
+        w_a2_Text.setText(person1.getWork().getAddress2());
+        
+        
+        
+        w_city_Text.setText(person1.getWork().getCity());
         
        
-        String wState=p1.getWork().getState();
-        w_state_Text.setText(wState);
         
-        String wZip=p1.getWork().getZip();
-        w_zip_Text.setText(wZip);
+        w_state_Text.setText(person1.getWork().getState());
         
         
-        String wCountry=p1.getWork().getCountry();
-        w_country_Text.setText(wCountry);
+        w_zip_Text.setText(person1.getWork().getZip());
+        
+        
+        
+        w_country_Text.setText(person1.getWork().getCountry());
          
         
     }
     
        private void displayLocalAddress(){
-        l.setAddress1("848 Huntington Avenue");
-        l.setAddress2("201");
-        l.setCity("Boston");
-        l.setState("MA");
-        l.setZip("02115");
-        l.setCountry("US");
-        
-        p1.setLocal(l);
-        
-        String la1=p1.getLocal().getAddress1();
-        l_a1_Text.setText(la1);
-        
-        String wa2=p1.getLocal().getAddress2();
-        l_a2_Text.setText(wa2);
+        person1.local.setAddress1("848 Huntington Ave");
+        person1.local.setAddress2("201");
+        person1.local.setCity("Boston");
+        person1.local.setState("MA");
+        person1.local.setZip("02115");
+        person1.local.setCountry("US");
         
         
-        String wcity=p1.getLocal().getCity();
-        l_city_Text.setText(wcity);
+        
+        
+        l_a1_Text.setText(person1.getLocal().getAddress1());
+        
+        
+        l_a2_Text.setText(person1.getLocal().getAddress2());
+        
+        
+        
+        l_city_Text.setText(person1.getLocal().getCity());
         
        
-        String wState=p1.getLocal().getState();
-        l_state_Text.setText(wState);
         
-        String wZip=p1.getLocal().getZip();
-        l_zip_Text.setText(wZip);
+        l_state_Text.setText(person1.getLocal().getState());
         
         
-        String wCountry=p1.getLocal().getCountry();
-        l_country_Text.setText(wCountry);
+        l_zip_Text.setText(person1.getLocal().getZip());
+        
+        
+        
+        l_country_Text.setText(person1.getLocal().getCountry());
          
         
     }
        
        private void displayHomeAddress(){
-        h.setAddress1("44 Jay Ambe Soc.,");
-        h.setAddress2("Bhatar Road");
-        h.setCity("Surat");
-        h.setState("GJ");
-        h.setZip("395001");
-        h.setCountry("IND");
-        
-        p1.setHome(h);
-        
-        String la1=p1.getHome().getAddress1();
-        h_a1_Text.setText(la1);
-        
-        String wa2=p1.getHome().getAddress2();
-        h_a2_Text.setText(wa2);
+        person1.home.setAddress1("44 Jay Ambe Soc");
+        person1.home.setAddress2("Bhatar Road");
+        person1.home.setCity("Surat");
+        person1.home.setState("GUJ");
+        person1.home.setZip("395001");
+        person1.home.setCountry("IND");
         
         
-        String wcity=p1.getHome().getCity();
-        h_city_Text.setText(wcity);
+        
+        
+        h_a1_Text.setText(person1.getHome().getAddress1());
+        
+        
+        h_a2_Text.setText(person1.getHome().getAddress2());
+        
+        
+        
+        h_city_Text.setText(person1.getHome().getCity());
         
        
-        String wState=p1.getHome().getState();
-        h_state_Text.setText(wState);
         
-        String wZip=p1.getHome().getZip();
-        h_zip_Text.setText(wZip);
+        h_state_Text.setText(person1.getHome().getState());
         
         
-        String wCountry=p1.getHome().getCountry();
-        h_country_Text.setText(wCountry);
+        h_zip_Text.setText(person1.getHome().getZip());
+        
+        
+        
+        h_country_Text.setText(person1.getHome().getCountry());
          
         
     }

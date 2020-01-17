@@ -10,12 +10,13 @@ import PersonDetails.Address;
  * @author chief_kmv
  */
 public class Person {
-    String fname= new String("Krutarth");
-    String lname= new String("Vanesa");
-    String DOB=new String("10/22/1997");
-    Address work;
-    Address local;
-    Address home;
+    String fname;
+    String lname;
+    String DOB;
+    public Address work=new Address();
+    public Address local=new Address();
+    public Address home=new Address();
+    
 
     public void setWork(Address work) {
         this.work = work;
