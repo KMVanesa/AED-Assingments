@@ -124,13 +124,16 @@ public class ViewPanel extends javax.swing.JPanel {
         Type_TextField = new javax.swing.JTextField();
         imageLabel = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 255, 255));
         setMinimumSize(new java.awt.Dimension(400, 800));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
         jLabel1.setText("View a Person Profile");
 
+        jLabel2.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel2.setText("I. General Information");
 
+        jLabel3.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel3.setText("First Name:");
 
         First_Name_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -139,8 +142,10 @@ public class ViewPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel4.setText("Last Name:");
 
+        jLabel5.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel5.setText("Phone Number:");
 
         Phone_Num_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +154,7 @@ public class ViewPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel6.setText("SSN:");
 
         SSN_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -157,8 +163,10 @@ public class ViewPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel7.setText("Date of Birth(MM/DD/YYYY):");
 
+        jLabel8.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel8.setText("Age:");
 
         Age_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -173,8 +181,10 @@ public class ViewPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel9.setText("II. Address Information");
 
+        jLabel10.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel10.setText("Addrees Line:");
 
         AddressLine_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -183,8 +193,10 @@ public class ViewPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel11.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel11.setText("City:");
 
+        jLabel12.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel12.setText("State:");
 
         State_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -193,10 +205,13 @@ public class ViewPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel13.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel13.setText("Zip Code:");
 
+        jLabel14.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel14.setText("Bank Name:");
 
+        jLabel15.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel15.setText("Account Number:");
 
         Routing_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -211,8 +226,10 @@ public class ViewPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel16.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel16.setText("Type:");
 
+        jLabel17.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel17.setText("Balance:");
 
         Balance_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -221,21 +238,37 @@ public class ViewPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel18.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel18.setText("Routing Number:");
 
+        Bank_Name_TextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bank_Name_TextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel20.setText("III.Banking Details");
 
+        jLabel21.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel21.setText("V.Medical Details");
 
+        jLabel22.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel22.setText("IV.Driving Lincese");
 
+        jLabel23.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel23.setText("Medical Records:");
 
+        jLabel24.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel24.setText("Allergy 1:");
 
+        jLabel25.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel25.setText("Allergy 2:");
 
+        jLabel26.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel26.setText("Allergy 3:");
+
+        imageLabel.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -253,8 +286,11 @@ public class ViewPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Bank_Name_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -338,9 +374,6 @@ public class ViewPanel extends javax.swing.JPanel {
                                 .addGap(25, 25, 25)
                                 .addComponent(jLabel20))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(143, 143, 143)
-                                .addComponent(Bank_Name_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(28, 28, 28)
                                 .addComponent(jLabel22)
                                 .addGap(51, 51, 51)
@@ -367,7 +400,7 @@ public class ViewPanel extends javax.swing.JPanel {
                                         .addComponent(jLabel23)
                                         .addGap(18, 18, 18)
                                         .addComponent(Med_Records_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 47, Short.MAX_VALUE)))
+                        .addGap(0, 33, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -505,6 +538,10 @@ public class ViewPanel extends javax.swing.JPanel {
     private void Acc_Num_TextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acc_Num_TextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Acc_Num_TextFieldActionPerformed
+
+    private void Bank_Name_TextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bank_Name_TextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Bank_Name_TextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

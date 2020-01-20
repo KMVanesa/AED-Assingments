@@ -38,8 +38,10 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 800));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setMinimumSize(new java.awt.Dimension(100, 800));
 
+        CreateButton.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         CreateButton.setText("Create");
         CreateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,6 +49,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        ViewButton.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         ViewButton.setText("View");
         ViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +78,8 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

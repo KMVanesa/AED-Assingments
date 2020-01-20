@@ -95,13 +95,18 @@ public class CreatePanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         imageLabel = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 204, 255));
         setMinimumSize(new java.awt.Dimension(400, 800));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel1.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
         jLabel1.setText("Create a Person Profile");
 
+        jLabel2.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel2.setText("I. General Information");
 
+        jLabel3.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel3.setText("First Name:");
 
         First_Name_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -110,8 +115,10 @@ public class CreatePanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel4.setText("Last Name:");
 
+        jLabel5.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel5.setText("Phone Number:");
 
         Phone_Num_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +127,7 @@ public class CreatePanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel6.setText("SSN:");
 
         SSN_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -128,8 +136,10 @@ public class CreatePanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel7.setText("Date of Birth(MM/DD/YYYY):");
 
+        jLabel8.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel8.setText("Age:");
 
         Age_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -144,8 +154,10 @@ public class CreatePanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel9.setText("II. Address Information");
 
+        jLabel10.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel10.setText("Addrees Line:");
 
         Address_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -154,8 +166,10 @@ public class CreatePanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel11.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel11.setText("City:");
 
+        jLabel12.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel12.setText("State:");
 
         State_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -164,10 +178,13 @@ public class CreatePanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel13.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel13.setText("Zip Code:");
 
+        jLabel14.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel14.setText("Bank Name:");
 
+        jLabel15.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel15.setText("Account Number:");
 
         Routing_Num_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -182,9 +199,11 @@ public class CreatePanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel16.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel16.setText("Type:");
 
         buttonGroup1.add(Checking_Radio);
+        Checking_Radio.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         Checking_Radio.setSelected(true);
         Checking_Radio.setText("Checking");
         Checking_Radio.addActionListener(new java.awt.event.ActionListener() {
@@ -194,6 +213,7 @@ public class CreatePanel extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(Saving_Radio);
+        Saving_Radio.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         Saving_Radio.setText("Saving");
         Saving_Radio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +221,7 @@ public class CreatePanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel17.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel17.setText("Balance:");
 
         Balance_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -209,22 +230,31 @@ public class CreatePanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel18.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel18.setText("Routing Number:");
 
+        jLabel20.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel20.setText("III.Banking Details");
 
+        jLabel21.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel21.setText("V.Medical Details");
 
+        jLabel22.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel22.setText("IV.Driving Lincese");
 
+        jLabel23.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel23.setText("Medical Records:");
 
+        jLabel24.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel24.setText("Allergy 1:");
 
+        jLabel25.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel25.setText("Allergy 2:");
 
+        jLabel26.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jLabel26.setText("Allergy 3:");
 
+        Submit_Button.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         Submit_Button.setText("Submit");
         Submit_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,6 +262,7 @@ public class CreatePanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jButton1.setText("Upload");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,6 +270,7 @@ public class CreatePanel extends javax.swing.JPanel {
             }
         });
 
+        imageLabel.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         imageLabel.setText("No Image Uploaded");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
