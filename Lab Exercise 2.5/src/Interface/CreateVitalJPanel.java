@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Business.VitalSignHistory;
 import Business.VitalSigns;
 import javax.swing.JOptionPane;
 
@@ -17,8 +18,10 @@ public class CreateVitalJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateVitalJPanel
      */
+    private VitalSignHistory vsh;
     public CreateVitalJPanel() {
         initComponents();
+        vsh=new VitalSignHistory();
     }
 
     /**
