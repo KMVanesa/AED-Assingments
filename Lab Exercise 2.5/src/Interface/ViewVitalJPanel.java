@@ -5,6 +5,11 @@
  */
 package Interface;
 
+import Business.VitalSignHistory;
+import Business.VitalSigns;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author chief_kmv
@@ -14,8 +19,32 @@ public class ViewVitalJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewVitalJPanel
      */
-    public ViewVitalJPanel() {
-        initComponents();
+    private VitalSignHistory vsh;
+    public ViewVitalJPanel(VitalSignHistory vsh) {
+            initComponents();
+        this.vsh = vsh;
+        populateTable();
+    }
+    public void populateTable(){
+    DefaultTableModel dtm = (DefaultTableModel)tblAbnormalSigns.getModel();
+    dtm.setRowCount(0);
+    
+    for (VitalSigns vs : vsh.getVitalSignHistory()){
+        
+        Object row[] = new Object[2];
+        row[0] = vs;
+        row[1] = vs.getBloodPressure();
+        dtm.addRow(row);    
+    }
+    }
+    
+    private void setFieldEnabled(boolean b){
+        
+        txtTemperature.setEnabled(b);
+        txtBloodPressure.setEnabled(b);
+        txtPulse.setEnabled(b);
+        txtDate.setEnabled(b);
+                
     }
 
     /**
@@ -227,7 +256,7 @@ public class ViewVitalJPanel extends javax.swing.JPanel {
             txtDate.setText(vs.getDate());
         }
         else
-        JOptionPane.showMessageDialog(null,"select row");
+            JOptionPane.showMessageDialog(null,"select row");
     }//GEN-LAST:event_ViewDetails_ButtonActionPerformed
 
     private void Delete_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_ButtonActionPerformed
@@ -241,8 +270,9 @@ public class ViewVitalJPanel extends javax.swing.JPanel {
             populateTable();
         }
 
-        else
-        JOptionPane.showMessageDialog(null,"select row");
+        else{
+             JOptionPane.showMessageDialog(null,"select row");
+        }
 
     }//GEN-LAST:event_Delete_ButtonActionPerformed
 

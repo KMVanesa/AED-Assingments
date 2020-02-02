@@ -5,6 +5,10 @@
         <group>
             <file>file:/Users/chief_kmv/Desktop/AED/Lab%20Exercise%202.5/src/Business/VitalSigns.java</file>
             <file>file:/Users/chief_kmv/Desktop/AED/Lab%20Exercise%202.5/src/Business/VitalSignHistory.java</file>
+            <file>file:/Users/chief_kmv/Desktop/AED/Lab%20Exercise%202.5/src/Interface/CreateVitalJPanel.java</file>
+            <file>file:/Users/chief_kmv/Desktop/AED/Lab%20Exercise%202.5/src/Interface/AbnormalJPanel.java</file>
+            <file>file:/Users/chief_kmv/Desktop/AED/Lab%20Exercise%202.5/src/Interface/MainJFrame.java</file>
+            <file>file:/Users/chief_kmv/Desktop/AED/Lab%20Exercise%202.5/src/Interface/ViewVitalJPanel.java</file>
         </group>
     </open-files>
 </project-private>

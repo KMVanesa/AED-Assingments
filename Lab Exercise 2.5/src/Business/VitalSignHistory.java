@@ -6,7 +6,7 @@
 package Business;
 
 import java.util.ArrayList;
-
+import Business.VitalSigns;
 /**
  *
  * @author chief_kmv
@@ -17,7 +17,7 @@ public class VitalSignHistory {
     {
      vitalSignHistory = new ArrayList<VitalSigns>();
     }
-
+    private ArrayList<VitalSigns> vitalSignHistory;
     public ArrayList<VitalSigns> getVitalSignHistory() {
         return vitalSignHistory;
     }
@@ -26,7 +26,7 @@ public class VitalSignHistory {
         this.vitalSignHistory = vitalSignHistory;
     }
     
-    private ArrayList<VitalSigns> vitalSignHistory;
+    
     public VitalSigns addVitals() {
     
         VitalSigns vs = new VitalSigns();

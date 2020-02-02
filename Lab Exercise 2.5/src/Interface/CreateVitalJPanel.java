@@ -19,9 +19,11 @@ public class CreateVitalJPanel extends javax.swing.JPanel {
      * Creates new form CreateVitalJPanel
      */
     private VitalSignHistory vsh;
-    public CreateVitalJPanel() {
+    public CreateVitalJPanel(VitalSignHistory vsh) {
         initComponents();
-        vsh=new VitalSignHistory();
+        this.vsh=vsh;
+        
+        
     }
 
     /**
