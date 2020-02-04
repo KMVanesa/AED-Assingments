@@ -98,12 +98,12 @@ public class MenuClass {
     void getInformation(int i){
         System.out.println(patient[i].getName());
            for(int l=0;l<patient[i].getAge().size();l++){
-                System.out.println("Visit:"+l+1+":Age:"+patient[i].age.get(l));
-                System.out.println("Visit:"+l+1+":Heart Rate:"+patient[i].heart_rate.get(l));
-                System.out.println("Visit:"+l+1+":Respirotary Rate:"+patient[i].res_rate.get(l));
-                System.out.println("Visit:"+l+1+":Blood Pressure:"+patient[i].blood_pressure.get(l));
-                System.out.println("Visit:"+l+1+":Weight in KGs:"+patient[i].weight.get(l));
-                System.out.println("Visit:"+l+1+":Weight in LBs:"+patient[i].weight_lbs.get(l));
+                System.out.println("Visit:"+(l+1)+":Age:"+patient[i].age.get(l));
+                System.out.println("Visit:"+(l+1)+":Heart Rate:"+patient[i].heart_rate.get(l));
+                System.out.println("Visit:"+(l+1)+":Respirotary Rate:"+patient[i].res_rate.get(l));
+                System.out.println("Visit:"+(l+1)+":Blood Pressure:"+patient[i].blood_pressure.get(l));
+                System.out.println("Visit:"+(l+1)+":Weight in KGs:"+patient[i].weight.get(l));
+                System.out.println("Visit:"+(l+1)+":Weight in LBs:"+patient[i].weight_lbs.get(l));
             }
         
         
@@ -164,13 +164,65 @@ public class MenuClass {
     
     void checkVitalSigns(int o){
         String sign=new String();
+        int abc=0;
+        System.out.println("Available options are:\n1)Respitory_Rate\n2)Heart_Rate\n3)Weight_in_Kgs\n4)Weight_in_Pounds  ");
+        while(abc==0){
         System.out.println("Enter Vital Sign you want to check:");
-        sign=scan.nextLine();
-        if (sign.equals("Respiratory Rate")==true) {
+        sign=scan.next();
+        if (sign.equals("Respiratory_Rate")==true) {
             System.out.println("Enter Respiratory Rate to check:");
             int res_rate=scan.nextInt();
-            verifyRes_rate(patient[o].getAge_int(),res_rate);          
+            if(verifyRes_rate(patient[o].getAge_int(),res_rate)==false){
+                System.out.println("----------ABNORMAL-----------");
+                abc++;
+            }else if(verifyRes_rate(patient[o].getAge_int(),res_rate)==true){
+                System.out.println("=========Normal============");
+                abc++;
+            }          
+        }else  if (sign.equals("Heart_Rate")==true) {
+            System.out.println("Enter Heart Rate to check:");
+            int heart_rate=scan.nextInt();
+            if(verifyHeart_rate(patient[o].getAge_int(),heart_rate)==false){
+                System.out.println("----------ABNORMAL-----------");
+                abc++;
+            }else if(verifyHeart_rate(patient[o].getAge_int(),heart_rate)==true){
+                System.out.println("=========Normal============");
+                abc++;
+            }          
+        }else  if (sign.equals("Blood_Pressure")==true) {
+            System.out.println("Enter Respiratory Rate to check:");
+            int bp=scan.nextInt();
+            if(verifyStolic_bp(patient[o].getAge_int(),bp)==false){
+                System.out.println("----------ABNORMAL-----------");
+                abc++;
+            }else if(verifyStolic_bp(patient[o].getAge_int(),bp)==true){
+                System.out.println("=========Normal============");
+                abc++;
+            }          
+        }else  if (sign.equals("Weight_in_Kgs")==true) {
+            System.out.println("Enter Weigth in KG to check:");
+            int weight=scan.nextInt();
+            if(verifyWeight_kgs(patient[o].getAge_int(),weight)==false){
+                System.out.println("----------ABNORMAL-----------");
+                abc++;
+            }else if(verifyWeight_kgs(patient[o].getAge_int(),weight)==true){
+                System.out.println("=========Normal============");
+                abc++;
+            }          
+        }else  if (sign.equals("Weight_in_Pounds")==true) {
+            System.out.println("Enter Respiratory Rate to check:");
+            int weight_lbs=scan.nextInt();
+            if(verifyWeight_pnds(patient[o].getAge_int(),weight_lbs)==false){
+                System.out.println("----------ABNORMAL-----------");
+                abc++;
+            }else if(verifyWeight_pnds(patient[o].getAge_int(),weight_lbs)==true){
+                System.out.println("=========Normal============");
+                abc++;
+            }          
+        }else{
+            System.out.println("Incorrect Input \n Please enter again!!!");
         }
+    }
     }
     
     boolean verifyRes_rate(int age,int rate){
@@ -209,11 +261,186 @@ public class MenuClass {
             return true;
         
     }
+    boolean verifyHeart_rate(int age, int heartRate) {
+
+        if (age == 0) {
+            if (heartRate >= 120 && heartRate <= 160) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } else if (age > 0 && age <= 1) {
+            if (heartRate >= 80 && heartRate <= 140) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age > 1 && age <= 3) {
+            if (heartRate >= 80 && heartRate <= 130) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age > 3 && age <= 5) {
+            if (heartRate >= 20 && heartRate <= 30) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age >= 6 && age <= 12) {
+            if (heartRate >= 70 && heartRate <= 110) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age >= 13) {
+            if (heartRate >= 55 && heartRate <= 105) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return true;
+
+    }
+    boolean verifyStolic_bp(int age, int stolicBP) {
+
+        if (age == 0) {
+            if (stolicBP >= 50 && stolicBP <= 70) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } else if (age > 0 && age <= 1) {
+            if (stolicBP >= 70 && stolicBP <= 100) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age > 1 && age <= 3) {
+            if (stolicBP >= 80 && stolicBP <= 110) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age > 3 && age <= 5) {
+            if (stolicBP >= 80 && stolicBP <= 110) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age >= 6 && age <= 12) {
+            if (stolicBP >= 80 && stolicBP <= 120) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age >= 13) {
+            if (stolicBP >= 110 && stolicBP <= 120) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return true;
+
+    }
+    
+    boolean verifyWeight_kgs(int age, int Weightkgs) {
+
+        if (age == 0) {
+            if (Weightkgs >= 2 && Weightkgs <= 3) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } else if (age > 0 && age <= 1) {
+            if (Weightkgs >= 4 && Weightkgs <= 10) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age > 1 && age <= 3) {
+            if (Weightkgs >= 10 && Weightkgs <= 14) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age > 3 && age <= 5) {
+            if (Weightkgs >= 14 && Weightkgs <= 18) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age >= 6 && age <= 12) {
+            if (Weightkgs >= 20 && Weightkgs <= 42) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age > 12) {
+            if (Weightkgs >= 50) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return true;
+
+    }
+    
+    boolean verifyWeight_pnds(int age, int weightPnds) {
+
+        if (age == 0) {
+            if (weightPnds >= 4.5 && weightPnds <= 7) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } else if (age >= 0 && age <= 1) {
+            if (weightPnds >= 9 && weightPnds <= 22) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age > 1 && age <= 3) {
+            if (weightPnds >= 22 && weightPnds <= 31) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age > 3 && age <= 5) {
+            if (weightPnds >= 31 && weightPnds <= 40) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age >= 6 && age <= 12) {
+            if (weightPnds >= 41 && weightPnds <= 92) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (age > 12) {
+            if (weightPnds >= 110) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return true;
+
+    }
     
     
     
     
     boolean isPatientNormal(int p){
+        
         
         System.out.println(patient[p].getAge_int());
         if(patient[p].getAge_int()>=0 && patient[p].getAge_int()<=1){
