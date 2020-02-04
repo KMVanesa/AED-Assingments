@@ -168,14 +168,49 @@ public class MenuClass {
         sign=scan.nextLine();
         if (sign.equals("Respiratory Rate")==true) {
             System.out.println("Enter Respiratory Rate to check:");
-            String res_rate=scan.nextLine();
-           
-                
-            
+            int res_rate=scan.nextInt();
+            verifyRes_rate(patient[o].getAge_int(),res_rate);          
         }
+    }
+    
+    boolean verifyRes_rate(int age,int rate){
         
+            if(age>=0 && age<=1){
+                if(rate>=30 && rate<=50){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else if(age>1 && age<=3){
+                if(rate>=20 && rate<=30){
+                    return true;
+                }else{
+                    return false;
+                }
+            } else if(age>3 && age<=5){
+                if(rate>=20 && rate<=30){
+                    return true;
+                }else{
+                    return false;
+                }
+            } else if(age>=6 && age<=12){
+                if(rate>=20 && rate<=30){
+                    return true;
+                }else{
+                    return false;
+                }
+            } else if(age>12){
+                if(rate>=12 && rate<=20){
+                    return true;
+                }else{
+                    return false;
+                }
+            } 
+            return true;
         
     }
+    
+    
     
     
     boolean isPatientNormal(int p){
