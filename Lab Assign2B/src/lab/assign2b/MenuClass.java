@@ -19,9 +19,9 @@ public class MenuClass {
     Patient patient[]=new Patient[100];
     void OpenMenu(){
         
-        int i=1;
+        boolean i=true;
         
-        while(i==1){
+        while(i==true){
             System.out.println("\n\n1)Create");
             System.out.println("2)History");
             System.out.println("3)Check Abnormal Vital Signs");
@@ -32,7 +32,7 @@ public class MenuClass {
                 index++;
                 CreateNewPatient(index);
             }else if(a==5){
-                i=4;
+                i=false;
             }else if(a==2){
                 getHistoryPatient();
             }else if(a==4){
