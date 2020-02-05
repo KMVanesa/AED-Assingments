@@ -20,6 +20,7 @@ public class Patient {
     ArrayList<Integer> blood_pressure= new ArrayList<>();
     ArrayList<Integer> weight= new ArrayList<>();
     ArrayList<Integer> weight_lbs= new ArrayList<>();
+    ArrayList<String> condition=new ArrayList<>();
     String name=new String();
     
     int weight_int;
@@ -27,6 +28,27 @@ public class Patient {
     int res_rate_int;
     int heart_rate_int;
     int bp_int;
+    
+    String condition_String=new String();
+
+    public ArrayList<String> getCondition() {
+        return condition;
+    }
+
+    public void setCondition(ArrayList<String> condition) {
+        this.condition = condition;
+    }
+
+    public String getCondition_String() {
+        return condition_String;
+    }
+
+    public void setCondition_String(String condition_String) {
+        condition.add(condition_String);
+        this.condition_String = condition_String;
+    }
+
+   
 
     public int getWeight_int() {
         return weight_int;

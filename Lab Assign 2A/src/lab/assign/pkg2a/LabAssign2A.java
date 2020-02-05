@@ -52,8 +52,8 @@ public class LabAssign2A {
     }
     static boolean isPatientNormal(){
         System.out.println(Patient1.getAge());
-        if(Patient1.getAge()>=0 && Patient1.getAge()<=1){
-            System.out.println("Infant");
+        if(Patient1.getAge()==0){
+            //System.out.println("Infant");
             if (Patient1.getRes_rate()>=30 && Patient1.getRes_rate()<=50 && 
                     Patient1.getHeart_rate()>=120 && Patient1.getHeart_rate()<=160 && 
                     Patient1.getBlood_pressure()>=50 && Patient1.getBlood_pressure()<=70 &&
@@ -62,9 +62,9 @@ public class LabAssign2A {
                 return true;
             }else{
                 return false;
-            }           
-        }else if(Patient1.getAge()>1 && Patient1.getAge()<=3){
-            System.out.println("Toddler");
+            }
+        }else if(Patient1.getAge()>=0 && Patient1.getAge()<=1){
+            //System.out.println("Infant");
             if (Patient1.getRes_rate()>=20 && Patient1.getRes_rate()<=30 && 
                     Patient1.getHeart_rate()>=80 && Patient1.getHeart_rate()<=140 && 
                     Patient1.getBlood_pressure()>=70 && Patient1.getBlood_pressure()<=100 &&
@@ -74,21 +74,32 @@ public class LabAssign2A {
             }else{
                 return false;
             }           
+        }else if(Patient1.getAge()>1 && Patient1.getAge()<=3){
+            //System.out.println("Toddler");
+            if (Patient1.getRes_rate()>=20 && Patient1.getRes_rate()<=30 && 
+                    Patient1.getHeart_rate()>=80 && Patient1.getHeart_rate()<=130 && 
+                    Patient1.getBlood_pressure()>=80 && Patient1.getBlood_pressure()<=110 &&
+                    Patient1.getWeight()>=4 && Patient1.getWeight()<=10 &&
+                    Patient1.getWeight_pounds()>=9 && Patient1.getWeight_pounds()<=22) {
+                return true;
+            }else{
+                return false;
+            }           
             
         }else if(Patient1.getAge()>3 && Patient1.getAge()<=5){
-            System.out.println("school");
+            //System.out.println("school");
             if (Patient1.getRes_rate()>=20 && Patient1.getRes_rate()<=30 && 
-                    Patient1.getHeart_rate()>=80 && Patient1.getHeart_rate()<=140 && 
+                    Patient1.getHeart_rate()>=80 && Patient1.getHeart_rate()<=120 && 
                     Patient1.getBlood_pressure()>=80 && Patient1.getBlood_pressure()<=110 &&
-                    Patient1.getWeight()>=10 && Patient1.getWeight()<=14 &&
-                    Patient1.getWeight_pounds()>=22 && Patient1.getWeight_pounds()<=31) {
+                    Patient1.getWeight()>=14 && Patient1.getWeight()<=18 &&
+                    Patient1.getWeight_pounds()>=32 && Patient1.getWeight_pounds()<=40) {
                 return true;
             }else{
                 return false;
             }           
             
         }else if(Patient1.getAge()>=6 && Patient1.getAge()<=12){
-            System.out.println("bacha");
+           // System.out.println("bacha");
             if (Patient1.getRes_rate()>=20 && Patient1.getRes_rate()<=30 && 
                     Patient1.getHeart_rate()>=80 && Patient1.getHeart_rate()<=120 && 
                     Patient1.getBlood_pressure()>=80 && Patient1.getBlood_pressure()<=110 &&
@@ -102,7 +113,7 @@ public class LabAssign2A {
             
         }else if(Patient1.getAge()>12){
             
-            System.out.println("Adult");
+           // System.out.println("Adult");
             if (Patient1.getRes_rate()>=12 && Patient1.getRes_rate()<=20 && 
                     Patient1.getHeart_rate()>=55 && Patient1.getHeart_rate()<=105 && 
                     Patient1.getBlood_pressure()>=110 && Patient1.getBlood_pressure()<=120 &&

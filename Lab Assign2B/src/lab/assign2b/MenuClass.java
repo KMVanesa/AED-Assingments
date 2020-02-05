@@ -76,8 +76,10 @@ public class MenuClass {
         
         if(isPatientNormal(m)==false){
             System.out.println("\n\n----------Abnormal-----------");
+            patient[m].setCondition_String("=====Abnormal Condition=======");
         }else if(isPatientNormal(m)==true){
             System.out.println("\n\n------------Normal------------");
+            patient[m].setCondition_String("========Normal Condition=========");
         }
        
         
@@ -106,6 +108,7 @@ public class MenuClass {
                 System.out.println("Visit:"+(l+1)+":Blood Pressure:"+patient[i].blood_pressure.get(l));
                 System.out.println("Visit:"+(l+1)+":Weight in KGs:"+patient[i].weight.get(l));
                 System.out.println("Visit:"+(l+1)+":Weight in LBs:"+patient[i].weight_lbs.get(l));
+                System.out.println("Visit:"+(l+1)+":Condition:"+patient[i].condition.get(l));
             }   
         
         
@@ -147,8 +150,11 @@ public class MenuClass {
         
         if(isPatientNormal(m)==false){
             System.out.println("\n\n----------Abnormal-----------");
+            patient[m].setCondition_String("=====Abnormal Condition=======");
+            
         }else if(isPatientNormal(m)==true){
             System.out.println("\n\n------------Normal------------");
+            patient[m].setCondition_String("========Normal Condition=========");
         }
         
     }
@@ -167,7 +173,7 @@ public class MenuClass {
     void checkVitalSigns(int o){
         String sign=new String();
         int abc=0;
-        System.out.println("\n\nAvailable options are:\n1)Respitory_Rate\n2)Heart_Rate\n3)Weight_in_Kgs\n4)Weight_in_Pounds  ");
+        System.out.println("\n\nAvailable options are:\n1)Respitory_Rate\n2)Heart_Rate\n3)Blood_Pressure\n4)Weight_in_Kgs\n5)Weight_in_Pounds  ");
         while(abc==0){
         System.out.println("\nEnter Vital Sign you want to check:");
         sign=scan.next();
@@ -450,7 +456,7 @@ public class MenuClass {
         
         
         System.out.println(patient[p].getAge_int());
-        if(patient[p].getAge_int()>=0 && patient[p].getAge_int()<=1){
+        if(patient[p].getAge_int()==0){
             //System.out.println("Infant");
             if (patient[p].getRes_rate_int()>=30 && patient[p].getRes_rate_int()<=50 && 
                     patient[p].getHeart_rate_int()>=120 && patient[p].getHeart_rate_int()<=160 && 
@@ -460,9 +466,9 @@ public class MenuClass {
                 return true;
             }else{
                 return false;
-            }           
-        }else if(patient[p].getAge_int()>1 && patient[p].getAge_int()<=3){
-            //System.out.println("Toddler");
+            }
+        }else if(patient[p].getAge_int()>=0 && patient[p].getAge_int()<=1){
+            //System.out.println("Infant");
             if (patient[p].getRes_rate_int()>=20 && patient[p].getRes_rate_int()<=30 && 
                     patient[p].getHeart_rate_int()>=80 && patient[p].getHeart_rate_int()<=140 && 
                     patient[p].getBp_int()>=70 && patient[p].getBp_int()<=100 &&
@@ -472,11 +478,10 @@ public class MenuClass {
             }else{
                 return false;
             }           
-            
-        }else if(patient[p].getAge_int()>3 && patient[p].getAge_int()<=5){
-            //System.out.println("school");
+        }else if(patient[p].getAge_int()>1 && patient[p].getAge_int()<=3){
+            //System.out.println("Toddler");
             if (patient[p].getRes_rate_int()>=20 && patient[p].getRes_rate_int()<=30 && 
-                    patient[p].getHeart_rate_int()>=80 && patient[p].getHeart_rate_int()<=140 && 
+                    patient[p].getHeart_rate_int()>=80 && patient[p].getHeart_rate_int()<=130 && 
                     patient[p].getBp_int()>=80 && patient[p].getBp_int()<=110 &&
                     patient[p].getWeight_int()>=10 && patient[p].getWeight_int()<=14 &&
                     patient[p].getWeight_lbs_int()>=22 && patient[p].getWeight_lbs_int()<=31) {
@@ -485,11 +490,23 @@ public class MenuClass {
                 return false;
             }           
             
-        }else if(patient[p].getAge_int()>=6 && patient[p].getAge_int()<=12){
-            //System.out.println("bacha");
+        }else if(patient[p].getAge_int()>3 && patient[p].getAge_int()<=5){
+            //System.out.println("school");
             if (patient[p].getRes_rate_int()>=20 && patient[p].getRes_rate_int()<=30 && 
                     patient[p].getHeart_rate_int()>=80 && patient[p].getHeart_rate_int()<=120 && 
                     patient[p].getBp_int()>=80 && patient[p].getBp_int()<=110 &&
+                    patient[p].getWeight_int()>=14 && patient[p].getWeight_int()<=18 &&
+                    patient[p].getWeight_lbs_int()>=31 && patient[p].getWeight_lbs_int()<=40) {
+                return true;
+            }else{
+                return false;
+            }           
+            
+        }else if(patient[p].getAge_int()>=6 && patient[p].getAge_int()<=12){
+            //System.out.println("bacha");
+            if (patient[p].getRes_rate_int()>=20 && patient[p].getRes_rate_int()<=30 && 
+                    patient[p].getHeart_rate_int()>=70 && patient[p].getHeart_rate_int()<=110 && 
+                    patient[p].getBp_int()>=80 && patient[p].getBp_int()<=120 &&
                     patient[p].getWeight_int()>=20 && patient[p].getWeight_int()<=42 &&
                     patient[p].getWeight_lbs_int()>=41 && patient[p].getWeight_lbs_int()<=92) {
                 return true;
