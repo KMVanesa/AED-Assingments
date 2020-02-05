@@ -5,14 +5,13 @@
  */
 package lab.assign2b;
 
-import java.util.Scanner;
 
 /**
  *
  * @author chief_kmv
  */
 public class LabAssign2B {
-    static Scanner scan=new Scanner(System.in);
+    
     
     /**
      * @param args the command line arguments
