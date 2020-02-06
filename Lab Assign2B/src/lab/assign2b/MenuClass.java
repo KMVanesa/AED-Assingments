@@ -68,10 +68,10 @@ public class MenuClass {
         patient[m].setBp_int(scan.nextInt());
         
         System.out.println("Enter the Weight(Kgs):");
-        patient[m].setWeight_int(scan.nextInt());
+        patient[m].setWeight_int(scan.nextDouble());
         
         System.out.println("Enter the Weight(lbs):");
-        patient[m].setWeight_lbs_int(scan.nextInt());
+        patient[m].setWeight_lbs_int(scan.nextDouble());
         
         
         if(isPatientNormal(m)==false){
@@ -142,10 +142,10 @@ public class MenuClass {
         patient[m].setHeart_rate_int(scan.nextInt());
         
         System.out.println("Enter the new Weight(Kgs):");
-        patient[m].setWeight_int(scan.nextInt());
+        patient[m].setWeight_int(scan.nextDouble());
         
         System.out.println("Enter the new Weight(lbs):");
-        patient[m].setWeight_lbs_int(scan.nextInt());
+        patient[m].setWeight_lbs_int(scan.nextDouble());
     
         
         if(isPatientNormal(m)==false){
@@ -209,7 +209,7 @@ public class MenuClass {
             }          
         }else  if (sign.equals("Weight_in_Kgs")==true) {
             System.out.println("\n\nEnter Weigth in KG to check:");
-            int weight=scan.nextInt();
+            double weight=scan.nextDouble();
             if(verifyWeight_kgs(patient[o].getAge_int(),weight)==false){
                 System.out.println("\n\n----------ABNORMAL-----------");
                 abc++;
@@ -219,7 +219,7 @@ public class MenuClass {
             }          
         }else  if (sign.equals("Weight_in_Pounds")==true) {
             System.out.println("\n\nEnter Respiratory Rate to check:");
-            int weight_lbs=scan.nextInt();
+            double weight_lbs=scan.nextDouble();
             if(verifyWeight_pnds(patient[o].getAge_int(),weight_lbs)==false){
                 System.out.println("\n\n----------ABNORMAL-----------");
                 abc++;
@@ -361,7 +361,7 @@ public class MenuClass {
 
     }
     
-    boolean verifyWeight_kgs(int age, int Weightkgs) {
+    boolean verifyWeight_kgs(int age, double Weightkgs) {
 
         if (age == 0) {
             if (Weightkgs >= 2 && Weightkgs <= 3) {
@@ -405,7 +405,7 @@ public class MenuClass {
 
     }
     
-    boolean verifyWeight_pnds(int age, int weightPnds) {
+    boolean verifyWeight_pnds(int age, double weightPnds) {
 
         if (age == 0) {
             if (weightPnds >= 4.5 && weightPnds <= 7) {

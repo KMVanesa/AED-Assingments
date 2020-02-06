@@ -18,13 +18,13 @@ public class Patient {
     ArrayList<Integer> res_rate= new ArrayList<>();
     ArrayList<Integer> heart_rate= new ArrayList<>();
     ArrayList<Integer> blood_pressure= new ArrayList<>();
-    ArrayList<Integer> weight= new ArrayList<>();
-    ArrayList<Integer> weight_lbs= new ArrayList<>();
+    ArrayList<Double> weight= new ArrayList<>();
+    ArrayList<Double> weight_lbs= new ArrayList<>();
     ArrayList<String> condition=new ArrayList<>();
     String name=new String();
     
-    int weight_int;
-    int weight_lbs_int;
+    double weight_int;
+    double weight_lbs_int;
     int res_rate_int;
     int heart_rate_int;
     int bp_int;
@@ -50,20 +50,20 @@ public class Patient {
 
    
 
-    public int getWeight_int() {
+    public double getWeight_int() {
         return weight_int;
     }
 
-    public void setWeight_int(int weight_int) {
+    public void setWeight_int(double weight_int) {
         weight.add(weight_int);
         this.weight_int = weight_int;
     }
 
-    public int getWeight_lbs_int() {
+    public double getWeight_lbs_int() {
         return weight_lbs_int;
     }
 
-    public void setWeight_lbs_int(int weight_lbs_int) {
+    public void setWeight_lbs_int(double weight_lbs_int) {
         weight_lbs.add(weight_lbs_int);
         this.weight_lbs_int = weight_lbs_int;
     }
@@ -149,19 +149,19 @@ public class Patient {
         this.blood_pressure = blood_pressure;
     }
 
-    public List<Integer> getWeight() {
+    public List<Double> getWeight() {
         return weight;
     }
 
-    public void setWeight(ArrayList<Integer> weight) {
+    public void setWeight(ArrayList<Double> weight) {
         this.weight = weight;
     }
 
-    public List<Integer> getWeight_lbs() {
+    public List<Double> getWeight_lbs() {
         return weight_lbs;
     }
 
-    public void setWeight_lbs(ArrayList<Integer> weight_lbs) {
+    public void setWeight_lbs(ArrayList<Double> weight_lbs) {
         this.weight_lbs = weight_lbs;
     }
     
