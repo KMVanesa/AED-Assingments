@@ -9,6 +9,8 @@ import Business.Product;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import Business.ProductDirectory;
+import java.awt.CardLayout;
+import java.awt.Component;
 /**
  *
  * @author info
@@ -52,6 +54,7 @@ public class ViewPanel extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtDesc = new javax.swing.JTextField();
+        BackButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 153, 255));
 
@@ -87,31 +90,43 @@ public class ViewPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Description");
 
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(lblHead))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblRoutingNo)
-                                .addComponent(lblAccNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblBankName)
-                                .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel1))
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtAvailablity)
-                            .addComponent(txtPrice)
-                            .addComponent(txtProdName)
-                            .addComponent(txtDesc))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(lblHead))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblRoutingNo)
+                                        .addComponent(lblAccNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblBankName)
+                                        .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel1))
+                                .addGap(45, 45, 45)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtAvailablity)
+                                    .addComponent(txtPrice)
+                                    .addComponent(txtProdName)
+                                    .addComponent(txtDesc)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(BackButton)))
                 .addContainerGap(158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,7 +153,9 @@ public class ViewPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnUpdate))
-                .addGap(0, 83, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(BackButton)
+                .addGap(16, 16, 16))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -155,24 +172,117 @@ public class ViewPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-            txtAvailablity.setEditable(false);
-            txtPrice.setEditable(false);
-            txtProdName.setEditable(false);
-            txtDesc.setEnabled(false);
-            btnSave.setEnabled(false);
-            btnUpdate.setEnabled(true);
+            String productName; 
+        double price; 
+        int availnumber; 
         
-            product.setName(txtProdName.getText());
-            product.setPrice(Double.parseDouble(txtPrice.getText()));
-            product.setAvailNum(Integer.parseInt(txtAvailablity.getText()));
-            product.setDescription(txtDesc.getText());
+        String description = new String();
+        try {
+            productName=txtProdName.getText();
+            if(productName==null || productName.isEmpty()){
+                
+                throw new NullPointerException("NO name entered"); 
+                
+          }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Product name is empty");
+            return;
+        }
+        try{
+            description=txtDesc.getText();
+            if(description==null || description.isEmpty()){
+                throw new NullPointerException("No description entered");
+            }
+            
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Description is empty");
+            
+        }
+        try
+           {
+               availnumber=Integer.parseInt(txtAvailablity.getText());
+           }
+           catch(NumberFormatException e)
+           {
+                JOptionPane.showMessageDialog(null,"please enter valid availability");
+                return;
+           }
+        try
+            {
+                price=Double.parseDouble(txtPrice.getText());
+            }
+            catch(NumberFormatException e)
+            {
+              //  e.printStackTrace();
+                JOptionPane.showMessageDialog(null,"please enter valid price");
+                return;
+            }
         
-            JOptionPane.showMessageDialog(null, "Account updated successfully");        
+        
+        
+        
+        JOptionPane.showMessageDialog(null,"Product Updated successfully");
+        
+        
+        
+        product.setName(txtProdName.getText());
+        product.setDescription(txtDesc.getText());
+        product.setAvailNum(Integer.parseInt(txtAvailablity.getText()));
+        product.setPrice(Double.parseDouble(txtPrice.getText()));
+        
+      //  availiblityjTextField.setText(String.valueOf(product.getAvailnumber()));
+      //  product.setDescription(descriptionjTextField.getText());
+     //   pricejTextField.setText(String.valueOf(product.getPrice()));
+       
+       
+        
+       txtProdName.setText(product.getName());
+        txtAvailablity.setText(String.valueOf(product.getAvailNum()));
+        txtPrice.setText(String.valueOf(product.getPrice()));
+        txtDesc.setText(product.getDescription());
+        //populateproductdetails(); 
+        
+        
+        
+        
+        
+        
+        
+        txtAvailablity.setEditable(false);
+        txtDesc.setEditable(false);
+        txtPrice.setEditable(false);
+        txtProdName.setEditable(false);
+        btnSave.setEnabled(false);
+        btnUpdate.setEnabled(true);
+        
+        
+        
+             
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        rightSplitPane.remove(this);
+        CardLayout layout =(CardLayout) rightSplitPane.getLayout();
+        
+        Component[] comps = rightSplitPane.getComponents();
+        for(Component comp : comps)
+        {
+            if(comp instanceof ManageProdPanel)
+            {
+                ManageProdPanel panel = (ManageProdPanel)comp;
+                panel.populate();
+            }
+        }
+         
+        //m.populateTable();
+        layout.previous(rightSplitPane);
+    }//GEN-LAST:event_BackButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
