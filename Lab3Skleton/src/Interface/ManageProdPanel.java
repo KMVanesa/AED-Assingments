@@ -8,6 +8,7 @@ package Interface;
 import Business.Product;
 import Business.ProductDirectory;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,7 +22,7 @@ public class ManageProdPanel extends javax.swing.JPanel {
      */
     private ProductDirectory prodDir;
 
-    ManageProdPanel( ProductDirectory prodDir) {
+    ManageProdPanel(JPanel rightSplitPane,ProductDirectory prodDir) {
         initComponents();
         this.prodDir=prodDir;
         populate();

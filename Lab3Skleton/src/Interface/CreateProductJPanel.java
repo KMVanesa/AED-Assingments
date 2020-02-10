@@ -8,20 +8,25 @@ package Interface;
 import javax.swing.JOptionPane;
 import Business.ProductDirectory;
 import Business.Product;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
 /**
  *
  * @author info
  */
 public class CreateProductJPanel extends javax.swing.JPanel {
-
+    Product product=new Product();
+    private JPanel rightSplitPane;
     /**
      * Creates new form CreateAccontJPanel
      */
     private ProductDirectory prodDir;
     
-    public CreateProductJPanel(ProductDirectory prodDir) {
+    public CreateProductJPanel(JPanel rightSplitPane,ProductDirectory prodDir) {
         initComponents();
+        this.rightSplitPane=rightSplitPane;
         this.prodDir = prodDir;
+        
     }
 
     /**
@@ -43,6 +48,7 @@ public class CreateProductJPanel extends javax.swing.JPanel {
         txtPrice = new javax.swing.JTextField();
         txtDescription = new javax.swing.JTextField();
         btnCreate = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 153, 255));
 
@@ -61,6 +67,13 @@ public class CreateProductJPanel extends javax.swing.JPanel {
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
+            }
+        });
+
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
             }
         });
 
@@ -88,7 +101,10 @@ public class CreateProductJPanel extends javax.swing.JPanel {
                             .addComponent(txtProdName)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(148, 148, 148)
-                        .addComponent(btnCreate)))
+                        .addComponent(btnCreate))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(BackButton)))
                 .addContainerGap(326, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -114,14 +130,59 @@ public class CreateProductJPanel extends javax.swing.JPanel {
                     .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnCreate)
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addComponent(BackButton)
+                .addGap(28, 28, 28))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-            Double.parseDouble(txtPrice.getText());
-            Integer.parseInt(txtAvailablity.getText());
+        String productName;
+        double price;
+        int avail_num;
+        String desc=new String();
+        try{
+               productName=txtProdName.getText();
+            if(productName==null || productName.isEmpty()){
+                throw new NullPointerException("Name field is Empty");
+            }
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Product Name is Empty");
+            return;
+        }
+        try{
+            desc=txtDescription.getText();
+            if(desc==null || desc.isEmpty()){
+                throw new NullPointerException("No description entered");
+            }
+            
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Description is empty");
+            return;
+        }
+        try
+           {
+               avail_num=Integer.parseInt(txtAvailablity.getText());
+           }
+           catch(NumberFormatException e)
+           {
+                JOptionPane.showMessageDialog(null,"please enter valid availability");
+                return;
+           }
+        try
+            {
+                price=Double.parseDouble(txtPrice.getText());
+            }
+            catch(NumberFormatException e)
+            {
+              //  e.printStackTrace();
+                JOptionPane.showMessageDialog(null,"please enter valid price");
+                return;
+            }
+        
+        
+            
             Product prod = prodDir.addProduct();
             prod.setName(txtProdName.getText());
             prod.setAvailNum(Integer.parseInt(txtAvailablity.getText()));
@@ -129,10 +190,22 @@ public class CreateProductJPanel extends javax.swing.JPanel {
             prod.setDescription(txtDescription.getText());
             
             JOptionPane.showMessageDialog(null, "Account Created Successfully");
+            txtAvailablity.setText("");
+            txtPrice.setText("");
+            txtDescription.setText("");
+            txtProdName.setText("");
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        rightSplitPane.remove(this);
+        CardLayout layout=(CardLayout) rightSplitPane.getLayout();
+        layout.previous(rightSplitPane);
+    }//GEN-LAST:event_BackButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JButton btnCreate;
     private javax.swing.JLabel lblAccNo;
     private javax.swing.JLabel lblBalance;
