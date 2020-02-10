@@ -7,6 +7,7 @@ package Interface;
 
 import Business.Product;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import Business.ProductDirectory;
 /**
  *
@@ -17,16 +18,18 @@ public class ViewPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewPanel
      */
-    private ProductDirectory prodDir;
+    //private ProductDirectory prodDir;
+    private JPanel rightSplitPane;
     private Product product;
-    ViewPanel(Product prod, ProductDirectory accDir) {
+    ViewPanel(JPanel rightSplitPane,Product prod) {
         initComponents();
+        this.rightSplitPane=rightSplitPane;
         this.product=prod;
         txtAvailablity.setText(String.valueOf(prod.getAvailNum()));
         txtPrice.setText(String.valueOf(prod.getPrice()));
         txtProdName.setText(prod.getName());
         txtDesc.setText(prod.getDescription());
-        this.prodDir = accDir;
+        //this.prodDir = accDir;
     }
 
     /**
