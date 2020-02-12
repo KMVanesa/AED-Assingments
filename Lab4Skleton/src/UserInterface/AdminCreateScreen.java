@@ -46,6 +46,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         btnCreate = new javax.swing.JButton();
         txtUser = new javax.swing.JTextField();
         txtPword = new javax.swing.JTextField();
@@ -70,6 +71,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
 
         jLabel3.setText("re-enter password :");
 
+        buttonGroup1.add(radioCustomer);
         radioCustomer.setText("Customer");
         radioCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +79,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
             }
         });
 
+        buttonGroup1.add(radioSupplier);
         radioSupplier.setText("Supplier");
 
         btnBack.setText("< BACK");
@@ -143,7 +146,76 @@ public class AdminCreateScreen extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
+        String Uname;
+        String Pwd;
+        String RePwd;
         
+        try{
+               Uname=txtUser.getText();
+            if(Uname==null || Uname.isEmpty()){
+                throw new NullPointerException("Name field is Empty");
+                
+            }else if(Pattern.matches("^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$", Uname)==false){
+                throw new Exception("Please enter valid email id");
+            }
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Product Name is Empty");
+            return;
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Product Name is invalid");
+            return;
+        }
+        
+        try {
+             Pwd=txtPword.getText();
+             RePwd=txtRePword.getText();
+            if(Pwd==null || Pwd.isEmpty()){
+                throw new NullPointerException("Pwd field is Empty");
+            }else if(Pattern.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,14}$", Pwd)==false){
+                throw new NumberFormatException("Invalid Password");
+            }else if (Pwd.equals(RePwd)==false) {
+                    throw new Exception("Password Does not Match");
+                }
+            
+            
+        }  catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Password is Empty");
+             return;
+        }catch (NumberFormatException e) {
+             JOptionPane.showMessageDialog(null, "Password is of invalid pattern");
+             return;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Password doesnot Match");
+            return;
+        }
+        
+        
+        try {
+            if (radioCustomer.isSelected()==false && radioSupplier.isSelected()==false) {
+                throw new Exception("No user selected");
+            }else if (radioCustomer.isSelected()==true) {
+                admin.getCustDir().getCustomerList().add(new Customer(Pwd, Uname));
+            }else if(radioSupplier.isSelected()==true){
+                admin.getSuppDir().getSupplierList().add(new Supplier(Pwd, Uname));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Please Select type of account");
+            return;
+        }
+        
+        JOptionPane.showMessageDialog(null, "Account Created");
+        txtUser.setText("");
+        txtRePword.setText("");
+        txtPword.setText("");
+        
+      
+        
+        
+        
+        
+        
+               
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void radioCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCustomerActionPerformed
@@ -155,6 +227,10 @@ public class AdminCreateScreen extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)panelRight.getLayout();
         panelRight.remove(this);
         layout.previous(panelRight);
+        
+        panelRight.add(new AdminMainScreen(panelRight, admin));
+        layout.next(panelRight);
+                
     }//GEN-LAST:event_btnBackActionPerformed
 
     
@@ -162,6 +238,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

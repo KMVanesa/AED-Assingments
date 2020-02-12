@@ -93,6 +93,14 @@ public class LoginScreen extends javax.swing.JPanel {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
         
+        String pwd=txtPword.getText();
+        int k=comboUser.getSelectedIndex();
+        if(list.get(k).verify(pwd)==true){
+            JOptionPane.showMessageDialog(null, "Signed In");
+        }else{
+            JOptionPane.showMessageDialog(null, "Wrong Pwd");
+        }
+        
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     
@@ -101,7 +109,12 @@ public class LoginScreen extends javax.swing.JPanel {
         //Based on the selection
         txtTitle.setText("****** Login Screen");
         comboUser.removeAllItems();
-        //only customer or suppliers should be listed based on the selection
+        list.forEach((user) -> {
+            comboUser.addItem(user);
+        }); //only customer or suppliers should be listed based on the selection
+        
+        
+        
     }
     
 
