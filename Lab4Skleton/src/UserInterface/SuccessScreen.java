@@ -63,7 +63,7 @@ public class SuccessScreen extends javax.swing.JPanel {
 
 
     private void initialize(){
-        jLabel2.setText(jLabel2.getText()+" "+user.getUserName()+" !!!");
+        jLabel2.setText(jLabel2.getText()+"MR."+user.getUserName()+" !!!!!!!");
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
