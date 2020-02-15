@@ -129,7 +129,7 @@ public class AdminMainScreen extends javax.swing.JPanel {
             Customer c = (Customer)u;
             Object[] row = new Object[dtm.getColumnCount()];
             row[0]=c;
-            //row[1]=c.getDirectory().getClass();
+            row[1]=String.valueOf(User.getDate());
             dtm1.addRow(row);
         }
 

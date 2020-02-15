@@ -5,6 +5,8 @@
  */
 package Business.Abstract;
 
+import java.util.Date;
+
 /**
  *
  * @author AEDSpring2019
@@ -13,11 +15,23 @@ public abstract class User {
     private String password;
     private String userName;
     private String role;
+    public static Date date;
 
+    public static Date getDate() {
+        return date;
+    }
+
+    public static void setDate(Date date) {
+        User.date = date;
+    }
+    
     public User(String password, String userName, String role) {
         this.password = password;
         this.userName = userName;
         this.role = role;
+        long showTime=System.currentTimeMillis();
+        Date stringTime = new java.util.Date(showTime);
+        User.setDate(stringTime);
     }
 
     public String getPassword() {

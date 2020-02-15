@@ -5,11 +5,13 @@
  */
 package UserInterface;
 
+
 import Business.Users.Admin;
 import Business.Users.Customer;
 import Business.Users.Supplier;
 import java.awt.CardLayout;
 import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
@@ -17,6 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -150,20 +153,26 @@ public class AdminCreateScreen extends javax.swing.JPanel {
         String Pwd;
         String RePwd;
         
+        
+        
         try{
                Uname=txtUser.getText();
             if(Uname==null || Uname.isEmpty()){
                 throw new NullPointerException("Name field is Empty");
                 
-            }else if(Pattern.matches("^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$", Uname)==false){
+                
+            }else if(Pattern.matches("^[a-zA-Z0-9]+_[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+$", Uname)==false){
                 throw new Exception("Please enter valid email id");
+                
             }
         }catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Product Name is Empty");
+            JOptionPane.showMessageDialog(null, "User Name is Empty");
+            txtUser.setBorder(new LineBorder(Color.RED,2));
             return;
             
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Product Name is invalid");
+            JOptionPane.showMessageDialog(null, " User Name is invalid");
+            txtUser.setBorder(new LineBorder(Color.RED,2));
             return;
         }
         
@@ -172,7 +181,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
              RePwd=txtRePword.getText();
             if(Pwd==null || Pwd.isEmpty()){
                 throw new NullPointerException("Pwd field is Empty");
-            }else if(Pattern.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,14}$", Pwd)==false){
+            }else if(Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", Pwd)==false){
                 throw new NumberFormatException("Invalid Password");
             }else if (Pwd.equals(RePwd)==false) {
                     throw new Exception("Password Does not Match");
@@ -181,12 +190,21 @@ public class AdminCreateScreen extends javax.swing.JPanel {
             
         }  catch(NullPointerException e){
              JOptionPane.showMessageDialog(null, "Password is Empty");
+             txtUser.setBorder(new LineBorder(Color.GREEN,2));
+             txtPword.setBorder(new LineBorder(Color.RED,2));
+             
              return;
         }catch (NumberFormatException e) {
              JOptionPane.showMessageDialog(null, "Password is of invalid pattern");
+             txtUser.setBorder(new LineBorder(Color.GREEN,2));
+             txtPword.setBorder(new LineBorder(Color.RED,2));
+             
              return;
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Password doesnot Match");
+            txtUser.setBorder(new LineBorder(Color.GREEN,2));
+            txtRePword.setBorder(new LineBorder(Color.RED,2));
+            
             return;
         }
         
@@ -196,11 +214,15 @@ public class AdminCreateScreen extends javax.swing.JPanel {
                 throw new Exception("No user selected");
             }else if (radioCustomer.isSelected()==true) {
                 admin.getCustDir().getCustomerList().add(new Customer(Pwd, Uname));
+
             }else if(radioSupplier.isSelected()==true){
                 admin.getSuppDir().getSupplierList().add(new Supplier(Pwd, Uname));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Please Select type of account");
+            txtUser.setBorder(new LineBorder(Color.GREEN,2));
+            txtPword.setBorder(new LineBorder(Color.GREEN,2));
+            txtRePword.setBorder(new LineBorder(Color.GREEN,2));
             return;
         }
         
@@ -208,6 +230,10 @@ public class AdminCreateScreen extends javax.swing.JPanel {
         txtUser.setText("");
         txtRePword.setText("");
         txtPword.setText("");
+        txtUser.setBorder(new LineBorder(Color.RED,0));
+        txtRePword.setBorder(new LineBorder(Color.RED,0));
+        txtPword.setBorder(new LineBorder(Color.RED,0));
+        buttonGroup1.clearSelection();
         
       
         

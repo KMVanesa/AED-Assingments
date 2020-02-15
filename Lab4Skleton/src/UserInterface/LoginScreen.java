@@ -9,9 +9,11 @@ import Business.Abstract.User;
 import Business.Users.Customer;
 import Business.Users.Supplier;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -97,8 +99,13 @@ public class LoginScreen extends javax.swing.JPanel {
         int k=comboUser.getSelectedIndex();
         if(list.get(k).verify(pwd)==true){
             JOptionPane.showMessageDialog(null, "Signed In");
+            CardLayout layout=(CardLayout)panelRight.getLayout();
+            panelRight.add(new SuccessScreen(list.get(k)));
+            layout.next(panelRight);
         }else{
             JOptionPane.showMessageDialog(null, "Wrong Pwd");
+            txtPword.setBorder(new LineBorder(Color.RED, 2));
+            
         }
         
     }//GEN-LAST:event_btnSubmitActionPerformed
@@ -108,11 +115,29 @@ public class LoginScreen extends javax.swing.JPanel {
         //text should either be "Supplier Login Screen" OR "Customer Login Screen"
         //Based on the selection
         txtTitle.setText("****** Login Screen");
+         
         comboUser.removeAllItems();
         list.forEach((user) -> {
             comboUser.addItem(user);
-        }); //only customer or suppliers should be listed based on the selection
+            
+        });
+        try {
+            int k=comboUser.getSelectedIndex();
+            String a=list.get(k).getRole();
+            txtTitle.setText(a+" Login Screen");
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No Users Created");
+            txtPword.setEnabled(false);
+            comboUser.setEnabled(false);
+            btnSubmit.setEnabled(false);
+        }
         
+        
+        
+//only customer or suppliers should be listed based on the selection
+        
+       
         
         
     }
