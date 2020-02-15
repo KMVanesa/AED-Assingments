@@ -158,7 +158,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
         try{
                Uname=txtUser.getText();
             if(Uname==null || Uname.isEmpty()){
-                throw new NullPointerException("Name field is Empty");
+                throw new NullPointerException("User Name field is Empty");
                 
                 
             }else if(Pattern.matches("^[a-zA-Z0-9]+_[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+$", Uname)==false){
@@ -226,7 +226,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
             return;
         }
         
-        JOptionPane.showMessageDialog(null, "Account Created");
+        JOptionPane.showMessageDialog(null, "Account Created ");
         txtUser.setText("");
         txtRePword.setText("");
         txtPword.setText("");
