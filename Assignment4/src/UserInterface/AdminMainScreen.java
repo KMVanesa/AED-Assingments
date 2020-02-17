@@ -63,7 +63,7 @@ public class AdminMainScreen extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Flight Name", "Price", "Number of seats", "From", "To", "Time"
+                "Airliner Name", "Flight Name", "Price", "Number of seats", "From", "To", "Time"
             }
         ));
         jScrollPane2.setViewportView(tableSup);
