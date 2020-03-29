@@ -4,7 +4,10 @@
  */
 package Business.UserAccount;
 
+import Business.EcoSystem;
 import Business.Employee.Employee;
+import Business.Restaurant.Restaurant;
+import Business.Restaurant.RestaurantDirectory;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -13,7 +16,7 @@ import java.util.ArrayList;
  * @author raunak
  */
 public class UserAccountDirectory {
-    
+   //private RestaurantDirectory resDir;
     private ArrayList<UserAccount> userAccountList;
 
     public UserAccountDirectory() {
@@ -40,6 +43,8 @@ public class UserAccountDirectory {
         userAccount.setEmployee(employee);
         userAccount.setRole(role);
         userAccountList.add(userAccount);
+        
+        
         return userAccount;
     }
     

@@ -124,7 +124,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
         // Get user name
          UserAccount ua = system.getUserAccountDirectory().authenticateUser(userNameJTextField.getText(), passwordField.getText());        
-        System.out.println(ua.getUsername());        
+//        System.out.println(ua.getUsername());        
         CardLayout layout = (CardLayout) container.getLayout();
         //container.add(new  SystemAdminWorkAreaJPanel(container, system));
         container.add(ua.getRole().createWorkArea(container, ua, system));

@@ -25,6 +25,10 @@ public class EcoSystem extends Organization{
     private DeliveryManDirectory deliveryManDirectory;
 
     public RestaurantDirectory getRestaurantDirectory() {
+        if(restaurantDirectory == null)
+        {
+            restaurantDirectory = new RestaurantDirectory();
+        }
         return restaurantDirectory;
     }
 
