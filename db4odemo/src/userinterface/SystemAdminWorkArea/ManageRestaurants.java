@@ -218,7 +218,7 @@ public class ManageRestaurants extends javax.swing.JPanel {
                 
                 //UserAccount user = (UserAccount) networkJTable.getValueAt(selectedRow, 0);
                 system.getUserAccountDirectory().deleteUserAccount(user);
-                system.getRestaurantDirectory().deleteRestaurent(selectedRow);
+                system.getRestaurantDirectory().deleteRestaurent(user.getUsername());
                 populateNetworkTable();
             }
         }else{

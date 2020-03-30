@@ -35,8 +35,12 @@ public class RestaurantDirectory {
         return restaurant;
     }
     
-    public void deleteRestaurent(int index){
-        restaurantList.remove(index-1);
+    public void deleteRestaurent(String username){
+        for(int i=0;i<restaurantList.size();i++){
+            if(restaurantList.get(i).getAdminUName().equals(username)){
+                restaurantList.remove(i);
+            }
+        }
     }
     
     public void updateRestaurantInfo(Restaurant restro,String name,String number,String address){

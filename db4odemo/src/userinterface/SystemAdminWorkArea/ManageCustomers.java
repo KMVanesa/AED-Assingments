@@ -292,7 +292,7 @@ public class ManageCustomers extends javax.swing.JPanel {
 
                 //UserAccount user = (UserAccount) networkJTable.getValueAt(selectedRow, 0);
                 system.getUserAccountDirectory().deleteUserAccount(user);
-                system.getCustomerDirectory().deleteCustomer(selectedRow);
+                system.getCustomerDirectory().deleteCustomer(user.getUsername());
                 populateNetworkTable();
             }
         }else{

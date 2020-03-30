@@ -25,9 +25,9 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         this.account=account;
         this.userProcessContainer = userProcessContainer;
         this.system=system;
-       // this.account=account;
+        //this.account=account;
       
-        //valueLabel.setText();
+        valueLabel.setText(account.getName());
     }
     
     /** This method is called from within the constructor to
@@ -79,8 +79,9 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel.setText("Restaurant :");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 120, 30));
 
+        valueLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageRestoInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageRestoInfoActionPerformed

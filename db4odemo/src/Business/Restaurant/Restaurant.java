@@ -16,6 +16,7 @@ public class Restaurant {
     private String adminUName;
     private ArrayList<Dishes> Menu;
     private ArrayList<Order> orderList;
+    int id=101;
 
     public ArrayList<Order> getOrderList() {
         return orderList;
@@ -29,13 +30,16 @@ public class Restaurant {
     
      public void addOrder(String restaurentName, String customerName, String deliverMan, ArrayList<Dishes> Order, String cost, String deliveryAddress) {
         Order order=new Order();
+        order.setOrder_id(String.valueOf(id));
         order.setCustomerName(customerName);
         order.setRestaurentName(restaurentName);
         order.setDeliverMan(deliverMan);
         order.setOrder(Order);
         order.setCost(cost);
         order.setDeliveryAddress(deliveryAddress);
+        order.setStatus("New Order");
         orderList.add(order);
+        id++;
     }
     public ArrayList<Dishes> getMenu() {
         return Menu;

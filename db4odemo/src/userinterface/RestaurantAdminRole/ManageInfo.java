@@ -72,7 +72,7 @@ public class ManageInfo extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Restaurent Name");
+        jLabel2.setText("Restaurant Name");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, -1, -1));
 
         jLabel3.setText("Phone Number");

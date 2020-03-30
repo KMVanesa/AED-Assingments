@@ -14,18 +14,22 @@ import java.util.ArrayList;
  * @author harold
  */
 public class Customer {
+    int id=101;
     private String Name;
      private String UserName;
       private ArrayList<Order> orderList;
      public void addOrder(String restaurentName, String customerName, String deliverMan, ArrayList<Dishes> Order, String cost, String deliveryAddress) {
         Order order=new Order();
+        order.setOrder_id(String.valueOf(id));
         order.setCustomerName(customerName);
         order.setRestaurentName(restaurentName);
         order.setDeliverMan(deliverMan);
         order.setOrder(Order);
         order.setCost(cost);
         order.setDeliveryAddress(deliveryAddress);
+        order.setStatus("New Order");
         orderList.add(order);
+        id++;
     }
 
     public String getUserName() {
@@ -35,13 +39,13 @@ public class Customer {
     public void setUserName(String UserName) {
         this.UserName = UserName;
     }
-    private ArrayList<Order> order;
+    
     private String address;
     private String number;
 
     public Customer(String UserName){
         this.UserName=UserName;
-        order=new ArrayList<Order>();
+        orderList=new ArrayList<Order>();
     }
     
     public String getName() {
@@ -52,12 +56,12 @@ public class Customer {
         this.Name = Name;
     }
 
-    public ArrayList<Order> getOrder() {
-        return order;
+    public ArrayList<Order> getOrderList() {
+        return orderList;
     }
 
-    public void setOrder(ArrayList<Order> order) {
-        this.order = order;
+    public void setOrderList(ArrayList<Order> order) {
+        this.orderList = order;
     }
 
     public String getAddress() {

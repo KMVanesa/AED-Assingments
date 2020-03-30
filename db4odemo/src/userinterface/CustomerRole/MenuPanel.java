@@ -43,6 +43,7 @@ public class MenuPanel extends javax.swing.JPanel {
        this.system=system;
         this.userAccount = account;
         populateTable();
+        valueLabel.setText(restro.getName());
        
     }
      public void populateTable(){
@@ -113,8 +114,9 @@ public class MenuPanel extends javax.swing.JPanel {
         });
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 560, -1, -1));
 
+        valueLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 130, -1));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 130, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Address:");
@@ -198,8 +200,8 @@ public class MenuPanel extends javax.swing.JPanel {
         add(addressTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 170, -1));
 
         enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel1.setText("EnterPrise :");
-        add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 120, 30));
+        enterpriseLabel1.setText("Order Here:");
+        add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cardBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardBtnActionPerformed
@@ -238,10 +240,10 @@ public class MenuPanel extends javax.swing.JPanel {
     private void orderBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderBtn1ActionPerformed
         // TODO add your handling code here:
         String address=addressTxt.getText();
-        restro.addOrder(restro.getName(), userAccount.getName(), null, items, String.valueOf(sum) , address);
+        restro.addOrder(restro.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
         for(Customer cust:system.getCustomerDirectory().getCustList()){
             if(userAccount.getUsername().equals(cust.getUserName())){
-                cust.addOrder(restro.getName(), userAccount.getName(), null, items, String.valueOf(sum) , address);
+                cust.addOrder(restro.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
             }
         }
     }//GEN-LAST:event_orderBtn1ActionPerformed
