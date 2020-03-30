@@ -11,6 +11,7 @@ import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -163,11 +164,79 @@ public class ManageMenu extends javax.swing.JPanel {
         String desc=descTxt.getText();
         String amount=amtTxt.getText();
        
+        
+         try {
+             if(name==null || name.isEmpty()){
+                throw new NullPointerException(" Name field is Empty");
+                
+                
+            }else if(name.length()<5 ){
+                throw new Exception("Please enter valid  Name");
+                
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, " Name is Empty");
+           
+            return;
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "  Name is invalid");
+       
+            return;
+        }
+        
+        try {
+             if(desc==null || desc.isEmpty()){
+                throw new NullPointerException("Description  field is Empty");
+                
+                
+            }else if(desc.length()<5){
+                throw new Exception("Please enter valid Description ");
+                
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Description is Empty");
+           
+            return;
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, " Description is invalid");
+       
+            return;
+        }
+        
+         try {
+             
+            if(amount==null || amount.isEmpty()){
+                throw new NullPointerException("amount field is Empty");
+            }else if(Pattern.matches("^[0-9]{0,3}$", amount)==false){
+                throw new Exception("Invalid amount (Enter 0-3 Digits)");
+            }
+            
+            
+        }  catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "amount is Empty");
+            
+             
+             return;
+        }catch (Exception e) {
+             JOptionPane.showMessageDialog(null, "amount is of invalid pattern");
+             
+             
+             return;
+        }
+        
+        
+        
         for(Restaurant restro:system.getRestaurantDirectory().getRestaurantList()){
            if(restro.getAdminUName().equals(account.getUsername())){
                 menu=system.getRestaurantDirectory().AddMenuDishes(restro,name, desc, amount);
             }   
         }
+        
+        dishNameTxt.setText("");
+        descTxt.setText("");
+        amtTxt.setText("");
         populateTable();
         
     }//GEN-LAST:event_addDishBtnActionPerformed

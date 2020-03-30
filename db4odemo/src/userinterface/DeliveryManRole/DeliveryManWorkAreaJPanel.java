@@ -12,6 +12,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -140,10 +141,17 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         }
         
         Order order = (Order)workRequestJTable.getValueAt(selectedRow, 0); 
-        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, order);
+        
+        if(order.getStatus().equals("Delivered")){
+            JOptionPane.showMessageDialog(null," Order Already Delivered","Warning",JOptionPane.WARNING_MESSAGE);
+        }else{
+        
+        
+        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, order,business);
         userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
         
     }//GEN-LAST:event_processJButtonActionPerformed
 

@@ -10,6 +10,8 @@ import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
@@ -134,6 +136,71 @@ public class ManageInfo extends javax.swing.JPanel {
         String name=nameTxt.getText();
         String address=addressTxt.getText();
         String number=numTxt.getText();
+        
+        
+              
+        try {
+             if(name==null || name.isEmpty()){
+                throw new NullPointerException(" Name field is Empty");
+                
+                
+            }else if(name.length()<5 ){
+                throw new Exception("Please enter valid  Name");
+                
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, " Name is Empty");
+           
+            return;
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "  Name is invalid");
+       
+            return;
+        }
+        
+        try {
+             if(address==null || address.isEmpty()){
+                throw new NullPointerException("Address field is Empty");
+                
+                
+            }else if(address.length()<5){
+                throw new Exception("Please enter valid address ");
+                
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Address is Empty");
+           
+            return;
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, " Address is invalid");
+       
+            return;
+        }
+        
+         try {
+             
+            if(number==null || number.isEmpty()){
+                throw new NullPointerException("Phone umber field is Empty");
+            }else if(Pattern.matches("^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$", number)==false){
+                throw new Exception("Invalid Phone Number (Enter 10 Digits)");
+            }
+            
+            
+        }  catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Phone Number is Empty");
+            
+             
+             return;
+        }catch (Exception e) {
+             JOptionPane.showMessageDialog(null, "Phone Number is of invalid pattern");
+             
+             
+             return;
+        }
+        
+        
        
         for(Restaurant restro:system.getRestaurantDirectory().getRestaurantList()){
            if(restro.getAdminUName().equals(account.getUsername())){

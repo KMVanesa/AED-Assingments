@@ -240,12 +240,46 @@ public class MenuPanel extends javax.swing.JPanel {
     private void orderBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderBtn1ActionPerformed
         // TODO add your handling code here:
         String address=addressTxt.getText();
+        
+        try {
+             if(address==null || address.isEmpty()){
+                throw new NullPointerException("Address field is Empty");
+                
+                
+            }else if(address.length()<5){
+                throw new Exception("Please enter valid address ");
+                
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Address is Empty");
+           
+            return;
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, " Address is invalid");
+       
+            return;
+        }
+        
+        
         restro.addOrder(restro.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
         for(Customer cust:system.getCustomerDirectory().getCustList()){
             if(userAccount.getUsername().equals(cust.getUserName())){
                 cust.addOrder(restro.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
             }
         }
+        
+        
+        JOptionPane.showMessageDialog(null,"Your Order is placed","Thank You",JOptionPane.WARNING_MESSAGE);
+        sum=0;
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        CustomerAreaJPanel dwjp = (CustomerAreaJPanel) component;
+        dwjp.populateTable();
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        
     }//GEN-LAST:event_orderBtn1ActionPerformed
 
     private void RemoveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveBtnActionPerformed
@@ -256,7 +290,9 @@ public class MenuPanel extends javax.swing.JPanel {
         }
         else{
             Dishes item=(Dishes)cartTable.getValueAt(selectedRow, 0);
+            
             items.remove(item);
+            sum=sum-Integer.parseInt(item.getPrice());
             DefaultTableModel model = (DefaultTableModel) cartTable.getModel();
         model.setRowCount(0);
             Object[] row = new Object[3];
@@ -264,6 +300,7 @@ public class MenuPanel extends javax.swing.JPanel {
                      row[0] = dish;
                      row[1] = dish.getDescription();
                      row[2] = dish.getPrice();
+                     
                      model.addRow(row);
                 }  
           

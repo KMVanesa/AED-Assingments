@@ -5,6 +5,7 @@
  */
 package userinterface.RestaurantAdminRole;
 
+import Business.Customer.Customer;
 import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.Order.Order;
@@ -148,6 +149,16 @@ public class AssignDeliveryMan extends javax.swing.JPanel {
             deliveryMan.getOrderList().add(order);
             order.setStatus("Assign to Deliveryman");
             
+            for(Customer cust:system.getCustomerDirectory().getCustList()){
+            if(order.getCustomerName().equals(cust.getUserName())){
+                for(Order order : cust.getOrderList()){
+                    order.setStatus("Assign to Deliveryman");
+                }
+            }
+        }
+         userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
             
         }
     }//GEN-LAST:event_AssignOrderBtnActionPerformed

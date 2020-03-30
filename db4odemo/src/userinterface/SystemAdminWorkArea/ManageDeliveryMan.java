@@ -13,6 +13,7 @@ import Business.Role.DeliverManRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -34,6 +35,7 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         populateNetworkTable();
+        ConfirmBtn.setEnabled(false);
     }
 
     /**
@@ -177,6 +179,10 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         else {
             JOptionPane.showMessageDialog(null,"Please select a row");
         }
+        submitJButton.setEnabled(false);
+        deleteBtn.setEnabled(false);
+        updateBtn.setEnabled(false);
+        ConfirmBtn.setEnabled(true);
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void populateNetworkTable() {
@@ -228,12 +234,83 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         String name = nameJTextField.getText();
         String uname=uNameTextField.getText();
         String password=PasswordField.getText();
-
+        
+        try {
+             if(name==null || name.isEmpty()){
+                throw new NullPointerException(" Name field is Empty");
+                
+                
+            }else if(name.length()<5 || Pattern.matches("^[A-Za-z]+$", name)==false){
+                throw new Exception("Please enter valid  Name");
+                
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, " Name is Empty");
+           
+            return;
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "  Name is invalid");
+       
+            return;
+        }
+        
+        try {
+             if(uname==null || uname.isEmpty()){
+                throw new NullPointerException("User Name field is Empty");
+                   
+            }else if(uname.length()<5){
+                throw new Exception("Please enter valid User Name");
+                
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "User Name is Empty");
+           
+            return;
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, " User Name is invalid");
+       
+            return;
+        }
+        
+         try {
+             
+            if(password==null || password.isEmpty()){
+                throw new NullPointerException("Pwd field is Empty");
+            }else if(Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password)==false){
+                throw new Exception("Invalid Password");
+            }
+            
+            
+        }  catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Password is Empty");
+            
+             
+             return;
+        }catch (Exception e) {
+             JOptionPane.showMessageDialog(null, "Password is of invalid pattern");
+             
+             
+             return;
+        }
+            
+  
+        
+        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
+            JOptionPane.showMessageDialog(null,"  User Name already exists ");
+        }else{
+            
         system.getUserAccountDirectory().updateUserAccount(user,name,uname,password);
         populateNetworkTable();
         nameJTextField.setText("");
         uNameTextField.setText("");
         PasswordField.setText("");
+        submitJButton.setEnabled(true);
+        deleteBtn.setEnabled(true);
+        updateBtn.setEnabled(true);
+        ConfirmBtn.setEnabled(false);
+        }
     }//GEN-LAST:event_ConfirmBtnActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -251,12 +328,83 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         String name = nameJTextField.getText();
         String uname=uNameTextField.getText();
         String password=PasswordField.getText();
+        
+        
+        try {
+             if(name==null || name.isEmpty()){
+                throw new NullPointerException(" Name field is Empty");
+                
+                
+            }else if(name.length()<5 || Pattern.matches("^[A-Za-z]+$", name)==false){
+                throw new Exception("Please enter valid  Name");
+                
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, " Name is Empty");
+           
+            return;
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "  Name is invalid");
+       
+            return;
+        }
+        
+        try {
+             if(uname==null || uname.isEmpty()){
+                throw new NullPointerException("User Name field is Empty");
+                
+                
+            }else if(uname.length()<5){
+                throw new Exception("Please enter valid User Name");
+                
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "User Name is Empty");
+           
+            return;
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, " User Name is invalid");
+       
+            return;
+        }
+        
+         try {
+             
+            if(password==null || password.isEmpty()){
+                throw new NullPointerException("Pwd field is Empty");
+            }else if(Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password)==false){
+                throw new Exception("Invalid Password");
+            }
+            
+            
+        }  catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Password is Empty");
+            
+             
+             return;
+        }catch (Exception e) {
+             JOptionPane.showMessageDialog(null, "Password is of invalid pattern");
+             
+             
+             return;
+        }
+            
+  
+        
+        
+        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
+            JOptionPane.showMessageDialog(null,"  User Name already exists ");
+        }else{
+            
         UserAccount ua1 =system.getUserAccountDirectory().createUserAccount(name,uname,password, null, new DeliverManRole());
         DeliveryMan deliveryMan= system.getDeliveryManDirectory().createDeliveryMan(uname);
         populateNetworkTable();
         nameJTextField.setText("");
         uNameTextField.setText("");
         PasswordField.setText("");
+        }
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed

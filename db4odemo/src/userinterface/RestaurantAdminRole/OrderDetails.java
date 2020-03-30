@@ -137,6 +137,10 @@ public class OrderDetails extends javax.swing.JPanel {
                 }
             }
         }
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        
         
     }//GEN-LAST:event_statusBtnActionPerformed
 

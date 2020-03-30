@@ -117,7 +117,7 @@ public class ManageOrders extends javax.swing.JPanel {
         });
         add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        viewOrderBtn.setText("View Order");
+        viewOrderBtn.setText("Ready to Deliver");
         viewOrderBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewOrderBtnActionPerformed(evt);
@@ -155,11 +155,15 @@ public class ManageOrders extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
         }
         else{
-            Order order  = (Order)orderTable.getValueAt(selectedRow, 0);           
-            OrderDetails viewOrder=new OrderDetails(userProcessContainer,account,order,system);
-            userProcessContainer.add("View Order",viewOrder);
-            CardLayout layout=(CardLayout)userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
+            Order order  = (Order)orderTable.getValueAt(selectedRow, 0);  
+            if(order.getStatus().equals("Ready to Deliver")){
+                JOptionPane.showMessageDialog(null,"Already Ready ","Warning",JOptionPane.WARNING_MESSAGE);
+            }else{
+                OrderDetails viewOrder=new OrderDetails(userProcessContainer,account,order,system);
+                userProcessContainer.add("View Order",viewOrder);
+                CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            }
         }
     }//GEN-LAST:event_viewOrderBtnActionPerformed
 
@@ -174,11 +178,15 @@ public class ManageOrders extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
         }
         else{
-            Order order  = (Order)orderTable.getValueAt(selectedRow, 0);           
-            AssignDeliveryMan viewOrder=new AssignDeliveryMan(userProcessContainer,account,order,system);
-            userProcessContainer.add("View Order",viewOrder);
-            CardLayout layout=(CardLayout)userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
+            Order order  = (Order)orderTable.getValueAt(selectedRow, 0);
+            if(order.getStatus().equals("Assign to Deliveryman")){
+                JOptionPane.showMessageDialog(null,"Already Assigned Order","Warning",JOptionPane.WARNING_MESSAGE);
+            }else{
+                AssignDeliveryMan viewOrder=new AssignDeliveryMan(userProcessContainer,account,order,system);
+                userProcessContainer.add("View Order",viewOrder);
+                CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            }
         }
     }//GEN-LAST:event_AssignBtn1ActionPerformed
 
